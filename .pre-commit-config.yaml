@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.16.9"
+    hooks:
+      - id: ruff-check
+        args: ["--fix", "--show-fixes"]
+        files: >-
+          ^(scripts/|rubric/|tests/|verl/experimental/reward_loop/reward_manager/rubric_.*\.py$)
+      - id: ruff-format
+        files: >-
+          ^(scripts/|rubric/|tests/|verl/experimental/reward_loop/reward_manager/rubric_.*\.py$)
+
+  - repo: local
+    hooks:
+      - id: compileall
+        name: Compile Python sources
+        entry: >-
+          sh -c 'PYTHONWARNINGS=error python3 -m compileall -q rubric scripts tests verl
+          -x "(^|[\\/])(\.venv|venv|\.git)([\\/]|$)"'
+        language: system
+        pass_filenames: false
