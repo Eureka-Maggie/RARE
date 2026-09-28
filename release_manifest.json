@@ -1,0 +1,38 @@
+{
+  "dataset": "RARE query-rubric annotations",
+  "schema_version": 1,
+  "total_rows": 5989,
+  "source_video_groups": 930,
+  "files": [
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/2d_animation/train.parquet",
+      "rows": 2125,
+      "sha256": "c3a4881952642c2e4cf8b3acce3872dbd969d06929a3f1e302fee6c5792235ff"
+    },
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/2d_animation/test.parquet",
+      "rows": 237,
+      "sha256": "11be79cee88518b8dd8b12f29865097ed5c5c036cd1c1c69389569d485ec95bd"
+    },
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/3d_stopmotion/train.parquet",
+      "rows": 1759,
+      "sha256": "5a1da4a85958a7b3e89b065ed4177d811ce9d477a1279feb23fe698c97236756"
+    },
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/3d_stopmotion/test.parquet",
+      "rows": 192,
+      "sha256": "af17d890678c8cb709267145ddad4d066b933301dea02f709f8936d0cf602ca7"
+    },
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/live_action/train.parquet",
+      "rows": 1509,
+      "sha256": "d9b982b2cb7655245db272f427482af3c4449f336d647edafecbc0dadcb9b22e"
+    },
+    {
+      "path": "data/scripts/video_corpus_manual_v1_1b_20260807/live_action/test.parquet",
+      "rows": 167,
+      "sha256": "c406a3b2b5043ced8c337841cb995a094d89bba5b5543d3524c66239cd7f5dce"
+    }
+  ]
+}
