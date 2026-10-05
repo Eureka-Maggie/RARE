@@ -8,3 +8,11 @@ contained unrelated experiment outputs and private infrastructure
 configuration that are not part of this release.
 
 Upstream copyright and license headers are retained in source files. The root `LICENSE` contains the full Apache License 2.0 text.
+
+The project page vendors these browser libraries in `docs/vendor/`:
+
+- [Marked](https://github.com/markedjs/marked), version 18.0.14, under the MIT
+  License. See `docs/vendor/marked.LICENSE`.
+- [DOMPurify](https://github.com/cure53/DOMPurify), version 3.4.16, under the
+  Apache License 2.0 or Mozilla Public License 2.0. See
+  `docs/vendor/dompurify.LICENSE`.

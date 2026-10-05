@@ -1,19 +1,22 @@
 <div align="center">
 
-# RARE
-
-### Evolving Rubrics for Script Generation
+# RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation
 
 Official implementation and data release for the RARE ICLR 2027 submission.
 
 <p>
-  <a href="#paper"><img src="https://img.shields.io/badge/ICLR%202027-Paper%20coming%20soon-B31B1B?style=flat-square" alt="Paper"></a>
+  <a href="https://openreview.net/forum?id=XgYh8jfypi"><img src="https://img.shields.io/badge/OpenReview-Paper-B31B1B?style=flat-square" alt="Paper"></a>
+  <a href="https://eureka-maggie.github.io/RARE/"><img src="https://img.shields.io/badge/Project%20Page-Examples-52735C?style=flat-square" alt="Project page and interactive examples"></a>
   <a href="https://huggingface.co/datasets/EurekaTian/RARE"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-FFD21E?style=flat-square" alt="Hugging Face dataset"></a>
   <a href="https://github.com/Eureka-Maggie/RARE/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Eureka-Maggie/RARE/ci.yml?branch=main&style=flat-square&label=tests" alt="Tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code%20license-Apache--2.0-2F6FEB?style=flat-square" alt="Apache-2.0 license"></a>
 </p>
 
 </div>
+
+**[Project page & interactive examples](https://eureka-maggie.github.io/RARE/)** ·
+[Paper](https://openreview.net/forum?id=XgYh8jfypi) ·
+[Dataset](https://huggingface.co/datasets/EurekaTian/RARE)
 
 RARE trains language models for complete screenplay generation with rubric
 rewards that evolve alongside the policy. It supports task-level rubric
@@ -219,7 +222,7 @@ models.
 ```text
 assets/                         README figures
 data/                           dataset documentation; files downloaded separately
-docs/                           paper implementation notes
+docs/                           project page, selected examples, and implementation notes
 rubric/                         judge, writer, and task-level rubric assets
 scripts/                        dataset utilities and six training launchers
 tests/                          data, launcher, client, and reward-manager tests
@@ -228,10 +231,11 @@ verl/                           required training-framework snapshot
 
 ## Paper
 
-**RARE: Evolving Rubrics for Script Generation.** ICLR 2027 submission.
+**RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation.**
+ICLR 2027 submission.
 
-The public paper URL and final BibTeX entry will be added when the public paper
-record becomes available.
+[Read the paper on OpenReview](https://openreview.net/forum?id=XgYh8jfypi) or
+[explore the project page](https://eureka-maggie.github.io/RARE/).
 
 ## License and acknowledgements
 
