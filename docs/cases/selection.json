@@ -1,0 +1,478 @@
+{
+  "paper_title": "RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation",
+  "paper_url": "https://openreview.net/forum?id=XgYh8jfypi",
+  "selection_date": "2026-10-06",
+  "base_model": "Qwen3-4B-Instruct-2507 (initial model)",
+  "rare_variant": "Sample-level, Negative replacement",
+  "score_note": "Individual case-export scores, normalized to 0–100. These are selected examples, not aggregate paper results.",
+  "cases": [
+    {
+      "id": "2d/097",
+      "query": "想要一个唯美但有点残酷的自然寓言，主题是人不该轻易占有不属于自己的东西",
+      "query_id": 3186,
+      "task_id": "r0096__7158825a76cf8285",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "需求完成度",
+          "base": 83.33,
+          "rare": 100,
+          "delta": 16.67
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 16.67,
+          "rare": 83.33,
+          "delta": 66.66
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 66.67,
+          "delta": 16.67
+        },
+        {
+          "name": "戏剧效果",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        }
+      ],
+      "domain": "2d",
+      "label": "Nature & possession",
+      "labelZh": "自然与占有",
+      "queryEn": "I want a beautiful but slightly cruel fable about nature, on the theme that people should not casually claim what does not belong to them.",
+      "excerptScenes": {
+        "base": [
+          3,
+          4
+        ],
+        "rare": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "id": "2d/188",
+      "query": "想写一个暗黑童话，主角为了救或赢回爱人，去挑战某种不能被贿赂的力量，结局是悲剧感的",
+      "query_id": 5342,
+      "task_id": "r0187__a65f27fad1cc7a42",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 62.5,
+          "rare": 91.67,
+          "delta": 29.17
+        },
+        {
+          "name": "需求完成度",
+          "base": 100,
+          "rare": 100,
+          "delta": 0
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 33.33,
+          "rare": 83.33,
+          "delta": 50
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "戏剧效果",
+          "base": 66.67,
+          "rare": 100,
+          "delta": 33.33
+        }
+      ],
+      "domain": "2d",
+      "label": "Love & the impossible",
+      "labelZh": "爱情与不可抗之力",
+      "queryEn": "I want to write a dark fairy tale in which the protagonist challenges a force that cannot be bribed to save or win back their lover, with a tragic ending.",
+      "excerptScenes": {
+        "base": [
+          4,
+          5
+        ],
+        "rare": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "id": "2d/201",
+      "query": "写个讽刺短片吧，关于基因决定阶级，大家都把缺陷藏起来，表面完美但很窒息",
+      "query_id": 5712,
+      "task_id": "r0200__213fbdf5a1a9f274",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 58.33,
+          "rare": 91.67,
+          "delta": 33.34
+        },
+        {
+          "name": "需求完成度",
+          "base": 66.67,
+          "rare": 100,
+          "delta": 33.33
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 50,
+          "rare": 100,
+          "delta": 50
+        },
+        {
+          "name": "视听可执行性",
+          "base": 66.67,
+          "rare": 83.33,
+          "delta": 16.66
+        },
+        {
+          "name": "戏剧效果",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        }
+      ],
+      "domain": "2d",
+      "label": "The perfect genome",
+      "labelZh": "完美基因的窒息感",
+      "queryEn": "Write a satirical short film about a society where genes determine class. Everyone hides their flaws; everything looks perfect, but feels suffocating.",
+      "excerptScenes": {
+        "base": [
+          5,
+          6
+        ],
+        "rare": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "id": "3d/035",
+      "query": "写个两个底层工具型机器人误闯出测试流程的故事，越荒诞越好",
+      "query_id": 1097,
+      "task_id": "r0034__1b1fbd2ab2c2c834",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 62.5,
+          "rare": 91.67,
+          "delta": 29.17
+        },
+        {
+          "name": "需求完成度",
+          "base": 50,
+          "rare": 100,
+          "delta": 50
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 66.67,
+          "rare": 100,
+          "delta": 33.33
+        },
+        {
+          "name": "视听可执行性",
+          "base": 66.67,
+          "rare": 83.33,
+          "delta": 16.66
+        },
+        {
+          "name": "戏剧效果",
+          "base": 66.67,
+          "rare": 83.33,
+          "delta": 16.66
+        }
+      ],
+      "domain": "3d",
+      "label": "Robots off-script",
+      "labelZh": "失控的机器人测试",
+      "queryEn": "Write a story about two low-ranking utility robots that accidentally stray outside the testing procedure. The more absurd, the better.",
+      "excerptScenes": {
+        "base": [
+          3,
+          4
+        ],
+        "rare": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "id": "3d/089",
+      "query": "我想写一个关于偏见和接纳的奇幻短故事，用古宅和小妖做载体，结尾留一点温柔余味",
+      "query_id": 2436,
+      "task_id": "r0088__4a40daefe4d54f01",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 66.67,
+          "rare": 95.83,
+          "delta": 29.16
+        },
+        {
+          "name": "需求完成度",
+          "base": 100,
+          "rare": 100,
+          "delta": 0
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 33.33,
+          "rare": 100,
+          "delta": 66.67
+        },
+        {
+          "name": "视听可执行性",
+          "base": 66.67,
+          "rare": 83.33,
+          "delta": 16.66
+        },
+        {
+          "name": "戏剧效果",
+          "base": 66.67,
+          "rare": 100,
+          "delta": 33.33
+        }
+      ],
+      "domain": "3d",
+      "label": "An unexpected guest",
+      "labelZh": "古宅里的偏见与接纳",
+      "queryEn": "I want to write a short fantasy story about prejudice and acceptance, set in an old house with a little spirit. Leave a touch of tenderness in the ending.",
+      "excerptScenes": {
+        "base": [
+          4,
+          5
+        ],
+        "rare": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "id": "3d/158",
+      "query": "第一人称独白的荒诞惊悚短剧：一个上班族发现公司所谓关怀计划背后有秘密",
+      "query_id": 4915,
+      "task_id": "r0157__d69c2cdbe423d8bd",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 62.5,
+          "rare": 95.83,
+          "delta": 33.33
+        },
+        {
+          "name": "需求完成度",
+          "base": 100,
+          "rare": 100,
+          "delta": 0
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 50,
+          "rare": 100,
+          "delta": 50
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "戏剧效果",
+          "base": 50,
+          "rare": 100,
+          "delta": 50
+        }
+      ],
+      "domain": "3d",
+      "label": "The care program",
+      "labelZh": "关怀计划背后的秘密",
+      "queryEn": "An absurd thriller told through a first-person monologue: an office worker discovers a secret behind the company’s so-called care program.",
+      "excerptScenes": {
+        "base": [
+          5,
+          6
+        ],
+        "rare": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "id": "live/016",
+      "query": "给我一个女性艺术探索题材，讲创作欲和恋爱生活冲突，最后更偏向自我选择",
+      "query_id": 1550,
+      "task_id": "r0015__779578f5332f6e40",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 66.67,
+          "rare": 91.67,
+          "delta": 25
+        },
+        {
+          "name": "需求完成度",
+          "base": 100,
+          "rare": 100,
+          "delta": 0
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "戏剧效果",
+          "base": 66.67,
+          "rare": 100,
+          "delta": 33.33
+        }
+      ],
+      "domain": "live",
+      "label": "A canvas of her own",
+      "labelZh": "创作、亲密与自我选择",
+      "queryEn": "Give me a story about a woman’s artistic exploration, with a conflict between her creative drive and romantic life, ending with a stronger emphasis on choosing for herself.",
+      "excerptScenes": {
+        "base": [
+          5,
+          6
+        ],
+        "rare": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "id": "live/039",
+      "query": "有没有达内兄弟那种手持纪实感的短剧本：贫穷社区、年轻混混、小事引爆、最后只剩空虚感",
+      "query_id": 2108,
+      "task_id": "r0038__3a71422d4409211b",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 45.83,
+          "rare": 79.17,
+          "delta": 33.34
+        },
+        {
+          "name": "需求完成度",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 33.33,
+          "rare": 66.67,
+          "delta": 33.34
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 66.67,
+          "delta": 16.67
+        },
+        {
+          "name": "戏剧效果",
+          "base": 50,
+          "rare": 100,
+          "delta": 50
+        }
+      ],
+      "domain": "live",
+      "label": "A small spark",
+      "labelZh": "小事引爆后的空虚",
+      "queryEn": "Could you write a short script with the Dardenne brothers’ handheld documentary feel: a poor neighborhood, young delinquents, a small incident that escalates, and only emptiness at the end?",
+      "excerptScenes": {
+        "base": [
+          3,
+          4
+        ],
+        "rare": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "id": "live/078",
+      "query": "我想看那种把无聊日常拍得很好笑又有点心酸的短片，人一直在胡思乱想",
+      "query_id": 3066,
+      "task_id": "r0077__6c990fcea0b6d487",
+      "scores": [
+        {
+          "name": "Overall-v9",
+          "base": 62.5,
+          "rare": 83.33,
+          "delta": 20.83
+        },
+        {
+          "name": "需求完成度",
+          "base": 83.33,
+          "rare": 100,
+          "delta": 16.67
+        },
+        {
+          "name": "叙事连贯性",
+          "base": 50,
+          "rare": 66.67,
+          "delta": 16.67
+        },
+        {
+          "name": "视听可执行性",
+          "base": 50,
+          "rare": 83.33,
+          "delta": 33.33
+        },
+        {
+          "name": "戏剧效果",
+          "base": 66.67,
+          "rare": 83.33,
+          "delta": 16.66
+        }
+      ],
+      "domain": "live",
+      "label": "An overthinking morning",
+      "labelZh": "胡思乱想的日常",
+      "queryEn": "I want a short film that makes mundane daily life very funny and a little sad, with a character whose mind keeps wandering.",
+      "excerptScenes": {
+        "base": [
+          5,
+          6
+        ],
+        "rare": [
+          5,
+          6
+        ]
+      }
+    }
+  ]
+}
