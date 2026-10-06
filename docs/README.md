@@ -17,7 +17,15 @@ Then open <http://localhost:8000/>. No package installation is required.
 task), original queries, paired case-export scores, English prompt
 translations, descriptive browsing labels, and excerpt scene numbers.
 The Markdown files in `cases/base/` and `cases/rare/` preserve the complete
-generated outputs. Excerpts are direct selections from those files.
+generated Chinese outputs. Complete English translations are in
+`cases/en/base/` and `cases/en/rare/`, including cast, scene lists, and
+audiovisual notes. Excerpts are direct selections from the corresponding files.
+
+The examples open in English. The EN / 中文 control switches all prompts,
+case labels, excerpts, full scripts, and downloads together. The choice persists
+across tasks and visits; an explicit `lang` URL parameter takes precedence.
+English text is a translation of the original output, not a new model sample.
+Scores always refer to the Chinese originals.
 
 - **Base:** initial Qwen3-4B-Instruct-2507, before task-specific training.
 - **RARE:** the sample-level Negative replacement variant.
@@ -32,7 +40,9 @@ python3 scripts/build_showcase.py
 ```
 
 The generated `assets/cases.json` is checked in so Pages needs no build tools.
-To share one case, use `?case=live%2F016#examples`, for example.
+The build checks that scene numbers and timecodes match across languages.
+To share one case, use `?case=live%2F016&lang=en#examples`, for example
+(or `lang=zh` for the Chinese original).
 
 ## Assets
 

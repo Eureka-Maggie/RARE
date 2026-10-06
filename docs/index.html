@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation. Explore the method, results, and nine paired script-generation examples."
+      content="RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation. Method, results, and bilingual script comparisons."
     />
-    <meta name="theme-color" content="#234b3e" />
+    <meta name="theme-color" content="#ffffff" />
     <meta
       property="og:title"
       content="RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation"
     />
     <meta
       property="og:description"
-      content="Rewards that evolve with the model. Method, results, and interactive Base–RARE script comparisons."
+      content="Adaptive rubric rewards for open-ended generation. Explore the method, results, and nine paired examples in English or Chinese."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://eureka-maggie.github.io/RARE/" />
@@ -27,247 +27,224 @@
       Generation
     </title>
     <link rel="canonical" href="https://eureka-maggie.github.io/RARE/" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css?v=2" />
     <script defer src="vendor/marked.umd.js"></script>
     <script defer src="vendor/purify.min.js"></script>
-    <script defer src="app.js"></script>
+    <script defer src="app.js?v=2"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <nav class="nav container" aria-label="Main navigation">
-        <a class="wordmark" href="#"
-          ><span class="brand-symbol" aria-hidden="true">↻</span> RARE</a
-        >
-        <div class="nav-links">
-          <a href="#examples">Examples</a><a href="#method">Method</a
-          ><a href="#results">Results</a
-          ><a class="nav-code" href="https://github.com/Eureka-Maggie/RARE"
-            >GitHub <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </nav>
-    </header>
     <main id="main">
-      <section class="hero container" aria-labelledby="paper-title">
-        <p class="eyebrow">
-          <span class="status-dot"></span> Reinforcement learning · Open-ended
-          generation
-        </p>
+      <header class="paper-header container">
         <h1 id="paper-title">
-          <span class="hero-name">RARE<span class="colon">:</span></span
-          ><span class="hero-title"
-            >Reinforcement Learning with<br class="desktop-break" />
-            Adaptive Rubric Evolution<br class="desktop-break" />
-            for Open-Ended Generation</span
-          >
+          <span
+            >RARE: Reinforcement Learning with Adaptive Rubric Evolution</span
+          ><span>for Open-Ended Generation</span>
         </h1>
-        <p class="hero-summary">
-          As models improve, their rewards should evolve.<br />RARE updates
-          satisfied rubric criteria to assess remaining quality gaps.
+        <nav class="paper-links" aria-label="Project links">
+          <a href="https://openreview.net/forum?id=XgYh8jfypi">Paper</a>
+          <a href="https://github.com/Eureka-Maggie/RARE">Code</a>
+          <a href="https://huggingface.co/datasets/EurekaTian/RARE">Dataset</a>
+          <a href="#examples">Examples</a>
+        </nav>
+      </header>
+
+      <section class="abstract prose" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>
+          Open-ended generation has no automatic verifier of overall quality: a
+          response must satisfy several requirements, and many different
+          responses can be valid. Rubric-based reinforcement learning makes
+          these requirements explicit, but fixed criteria can lose their ability
+          to distinguish outputs as the policy improves.
         </p>
-        <div class="hero-links">
-          <a class="button primary" href="#examples"
-            >Explore examples <span aria-hidden="true">↓</span></a
-          >
-          <a class="button" href="https://openreview.net/forum?id=XgYh8jfypi"
-            >Paper <span aria-hidden="true">↗</span></a
-          >
-          <a class="button" href="https://github.com/Eureka-Maggie/RARE"
-            >Code <span aria-hidden="true">↗</span></a
-          >
-          <a
-            class="button"
-            href="https://huggingface.co/datasets/EurekaTian/RARE"
-            >Dataset <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="hero-facts">
-          <div><strong>5,989</strong><span>query–rubric pairs</span></div>
-          <div><strong>3</strong><span>script-generation tasks</span></div>
-          <div>
-            <strong>+3.82</strong><span>mean points over Sample-Static</span>
-          </div>
-        </div>
+        <p>
+          RARE uses current-policy feedback to update criteria that are fully
+          satisfied across a query’s outputs, while retaining the other criteria
+          and their scores. Replacements assess remaining quality differences.
+          On three script-generation tasks, targeting observed flaws gives a
+          mean gain of <strong>3.82 points over matched static rubrics</strong>.
+          The release includes training code and 5,989 query–rubric pairs.
+        </p>
       </section>
 
       <section
-        class="examples-section"
         id="examples"
+        class="section container"
         aria-labelledby="examples-title"
       >
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">01 / The generations</p>
-              <h2 id="examples-title">One prompt. Two scripts.</h2>
-            </div>
+        <div class="examples-heading">
+          <div>
+            <h2 id="examples-title">Script examples</h2>
             <p>
-              Nine selected examples across three tasks.<br />Explore the
-              original outputs side by side.
+              Nine selected prompts, with outputs from the initial model and
+              RARE.
             </p>
           </div>
-          <div
-            class="domain-tabs"
-            role="tablist"
-            aria-label="Script-generation task"
-          >
-            <button
-              id="tab-2d"
-              role="tab"
-              aria-selected="true"
-              aria-controls="case-browser"
-              data-domain="2d"
-            >
-              2D animation <span>03</span>
-            </button>
-            <button
-              id="tab-3d"
-              role="tab"
-              aria-selected="false"
-              aria-controls="case-browser"
-              data-domain="3d"
-              tabindex="-1"
-            >
-              3D / stop-motion <span>03</span>
-            </button>
-            <button
-              id="tab-live"
-              role="tab"
-              aria-selected="false"
-              aria-controls="case-browser"
-              data-domain="live"
-              tabindex="-1"
-            >
-              Live action <span>03</span>
-            </button>
-          </div>
-          <div id="case-browser" role="tabpanel" aria-labelledby="tab-2d">
+          <div class="language-control">
+            <span id="language-label">Language</span>
             <div
-              id="case-list"
-              class="case-list"
-              aria-label="Choose an example"
+              class="language-switch"
+              role="group"
+              aria-labelledby="language-label"
             >
-              <p>Loading examples…</p>
+              <button type="button" data-language="en" aria-pressed="true">
+                EN</button
+              ><button
+                type="button"
+                data-language="zh"
+                aria-pressed="false"
+                lang="zh-CN"
+              >
+                中文
+              </button>
             </div>
-            <article
-              class="case-detail"
-              id="case-detail"
-              aria-label="Selected example"
-              hidden
-            >
-              <div class="query-card">
-                <div class="query-label">
-                  <span class="eyebrow">The prompt</span
-                  ><span id="case-id"></span
-                  ><a
-                    id="permalink"
-                    href="#examples"
-                    aria-label="Link to this example"
-                    >Link <span aria-hidden="true">↗</span></a
-                  >
-                </div>
-                <p id="query" lang="zh-CN"></p>
-                <p id="query-en"></p>
-                <span class="translation-label"
-                  >English translation of the original Chinese prompt</span
-                >
-              </div>
-              <div class="score-header">
-                <h3>Quality scores <span>/ 100</span></h3>
-                <div class="legend">
-                  <span><i class="base-dot"></i>Base</span
-                  ><span><i class="rare-dot"></i>RARE</span>
-                </div>
-              </div>
-              <div
-                id="scores"
-                class="scores"
-                aria-label="Scores for the selected example"
-              ></div>
-              <div class="reading-toolbar">
-                <div class="view-switch" role="group" aria-label="Script view">
-                  <button data-view="excerpt" aria-pressed="true">
-                    Selected scenes</button
-                  ><button data-view="full" aria-pressed="false">
-                    Full scripts
-                  </button>
-                </div>
-                <span
-                  >Original Chinese outputs <span aria-hidden="true">·</span>
-                  <span id="reading-hint"
-                    >Scroll each script to read</span
-                  ></span
-                >
-              </div>
-              <div class="script-pair">
-                <section
-                  class="script-panel base-panel"
-                  aria-labelledby="base-heading"
-                >
-                  <header>
-                    <div>
-                      <h3 id="base-heading">Base</h3>
-                      <p>Qwen3-4B-Instruct-2507 · initial model</p>
-                    </div>
-                    <span id="base-overall" class="overall-score"></span>
-                  </header>
-                  <div class="script-title-row">
-                    <h4 id="base-title" lang="zh-CN"></h4>
-                    <a id="base-download" download>↓ <span>Markdown</span></a>
-                  </div>
-                  <p id="base-scene-label" class="scene-label"></p>
-                  <div
-                    id="base-script"
-                    class="script-content"
-                    lang="zh-CN"
-                    tabindex="0"
-                    role="region"
-                    aria-label="Base script"
-                  ></div>
-                </section>
-                <section
-                  class="script-panel rare-panel"
-                  aria-labelledby="rare-heading"
-                >
-                  <header>
-                    <div>
-                      <h3 id="rare-heading">RARE <span>Ours</span></h3>
-                      <p>Sample-level · Negative replacement</p>
-                    </div>
-                    <span id="rare-overall" class="overall-score"></span>
-                  </header>
-                  <div class="script-title-row">
-                    <h4 id="rare-title" lang="zh-CN"></h4>
-                    <a id="rare-download" download>↓ <span>Markdown</span></a>
-                  </div>
-                  <p id="rare-scene-label" class="scene-label"></p>
-                  <div
-                    id="rare-script"
-                    class="script-content"
-                    lang="zh-CN"
-                    tabindex="0"
-                    role="region"
-                    aria-label="RARE script"
-                  ></div>
-                </section>
-              </div>
-              <p class="case-footnote">
-                These selected pairs compare the initial model with RARE. Scores
-                describe individual outputs from the case export; aggregate
-                comparisons with static-rubric training appear in
-                <a href="#results">Results</a>.
-              </p>
-            </article>
           </div>
-          <noscript
-            ><p>
-              Enable JavaScript to explore the paired examples, or
-              <a href="assets/cases.json">download all nine examples</a>.
-            </p></noscript
-          >
         </div>
+        <p class="language-note" id="language-note">
+          English translations of the Chinese outputs. Scores evaluate the
+          original scripts.
+        </p>
+        <div
+          class="domain-tabs"
+          role="tablist"
+          aria-label="Script-generation task"
+        >
+          <button
+            id="tab-2d"
+            role="tab"
+            aria-selected="true"
+            aria-controls="case-browser"
+            data-domain="2d"
+          >
+            2D animation
+          </button>
+          <button
+            id="tab-3d"
+            role="tab"
+            aria-selected="false"
+            aria-controls="case-browser"
+            data-domain="3d"
+            tabindex="-1"
+          >
+            3D / stop-motion
+          </button>
+          <button
+            id="tab-live"
+            role="tab"
+            aria-selected="false"
+            aria-controls="case-browser"
+            data-domain="live"
+            tabindex="-1"
+          >
+            Live action
+          </button>
+        </div>
+        <div id="case-browser" role="tabpanel" aria-labelledby="tab-2d">
+          <div id="case-list" class="case-list" aria-label="Choose an example">
+            <p>Loading examples…</p>
+          </div>
+          <article
+            class="case-detail"
+            id="case-detail"
+            aria-label="Selected example"
+            hidden
+          >
+            <div class="query-card">
+              <div class="query-label">
+                <strong>Prompt</strong><span id="case-id"></span
+                ><a id="permalink" href="#examples">Link to this example</a>
+              </div>
+              <p id="query"></p>
+            </div>
+            <div class="score-header">
+              <h3>Quality scores <span>/ 100</span></h3>
+              <div class="legend">
+                <span><i class="base-dot"></i>Base</span
+                ><span><i class="rare-dot"></i>RARE</span>
+              </div>
+            </div>
+            <div
+              id="scores"
+              class="scores"
+              aria-label="Scores for the selected example"
+            ></div>
+            <div class="reading-toolbar">
+              <div class="view-switch" role="group" aria-label="Script view">
+                <button data-view="excerpt" aria-pressed="true">
+                  Selected scenes</button
+                ><button data-view="full" aria-pressed="false">
+                  Full scripts
+                </button>
+              </div>
+              <span>Scroll within each script to read</span>
+            </div>
+            <div class="script-pair">
+              <section
+                class="script-panel base-panel"
+                aria-labelledby="base-heading"
+              >
+                <header>
+                  <div>
+                    <h3 id="base-heading">Base</h3>
+                    <p>Qwen3-4B-Instruct-2507 · initial model</p>
+                  </div>
+                  <span id="base-overall" class="overall-score"></span>
+                </header>
+                <div class="script-title-row">
+                  <h4 id="base-title"></h4>
+                  <a id="base-download" download>Download</a>
+                </div>
+                <p id="base-scene-label" class="scene-label"></p>
+                <div
+                  id="base-script"
+                  class="script-content"
+                  tabindex="0"
+                  role="region"
+                  aria-label="Base script"
+                ></div>
+              </section>
+              <section
+                class="script-panel rare-panel"
+                aria-labelledby="rare-heading"
+              >
+                <header>
+                  <div>
+                    <h3 id="rare-heading">RARE</h3>
+                    <p>Sample-level · Negative replacement</p>
+                  </div>
+                  <span id="rare-overall" class="overall-score"></span>
+                </header>
+                <div class="script-title-row">
+                  <h4 id="rare-title"></h4>
+                  <a id="rare-download" download>Download</a>
+                </div>
+                <p id="rare-scene-label" class="scene-label"></p>
+                <div
+                  id="rare-script"
+                  class="script-content"
+                  tabindex="0"
+                  role="region"
+                  aria-label="RARE script"
+                ></div>
+              </section>
+            </div>
+            <p class="case-footnote">
+              These examples compare the initial model with RARE. They are
+              selected individual outputs; aggregate comparisons with
+              static-rubric training are reported below.
+            </p>
+          </article>
+        </div>
+        <noscript
+          ><p>
+            Enable JavaScript to explore the examples, or browse the
+            <a href="https://github.com/Eureka-Maggie/RARE/tree/main/docs/cases"
+              >English translations and Chinese originals</a
+            >.
+          </p></noscript
+        >
       </section>
 
       <section
@@ -275,235 +252,151 @@
         class="section container"
         aria-labelledby="method-title"
       >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">02 / The method</p>
-            <h2 id="method-title">
-              Keep what still teaches.<br />Update what no longer does.
-            </h2>
-          </div>
+        <h2 id="method-title">Method</h2>
+        <div class="prose section-intro">
           <p>
-            A rubric can become less informative as the model learns to satisfy
-            it. RARE uses current-policy feedback to decide which criteria
-            change and what their replacements assess.
+            For each query, RARE samples eight outputs and scores them against
+            the current rubric. A criterion is saturated when all eight valid
+            judgments assign its maximum score. RARE replaces up to three
+            saturated criteria, rescores the replacements on the same outputs,
+            and uses the updated rewards in the current policy update.
           </p>
         </div>
-        <div class="method-steps">
-          <div>
-            <span class="step-number">01</span>
-            <h3>Generate & evaluate</h3>
-            <p>
-              Sample eight outputs for each query and score them against the
-              current rubric.
-            </p>
-          </div>
-          <div>
-            <span class="step-number">02</span>
-            <h3>Find saturated criteria</h3>
-            <p>
-              Identify criteria that all eight valid judgments score at the
-              maximum.
-            </p>
-          </div>
-          <div>
-            <span class="step-number">03</span>
-            <h3>Refine the feedback</h3>
-            <p>
-              Replace up to three saturated criteria using observed quality
-              gaps. Retain the others.
-            </p>
-          </div>
-          <div>
-            <span class="step-number">04</span>
-            <h3>Learn from the update</h3>
-            <p>
-              Rescore replacements on the same outputs and use the resulting
-              rewards for the current policy update.
-            </p>
-          </div>
-        </div>
-        <figure class="method-figure">
+        <figure>
           <a
             href="assets/method_overview.png"
             target="_blank"
             rel="noopener"
-            aria-label="Open the full-resolution RARE method diagram"
+            aria-label="Open the method figure at full resolution"
             ><img
               src="assets/method_overview.png"
               loading="lazy"
               width="2048"
               height="1035"
-              alt="RARE pipeline: query–rubric data construction, eight on-policy rollouts, per-criterion scoring, replacement of saturated criteria, and GRPO policy optimization."
+              alt="RARE pipeline: query–rubric data construction, eight on-policy rollouts, criterion scoring, replacement of saturated criteria, and GRPO optimization."
           /></a>
           <figcaption>
-            Sample-level adaptive rubric evolution. Click the figure to view it
-            at full resolution.
+            Sample-level rubric evolution. Unchanged criteria retain their
+            original scores.
           </figcaption>
         </figure>
-        <div class="method-note">
-          <strong>What should a replacement look for?</strong>
-          <p>
-            We compare <em>Positive</em> criteria describing desired qualities,
-            <em>Negative</em> criteria targeting observable flaws, and
-            <em>Mixed</em> criteria combining both. Negative replacements
-            perform best across the three script-generation tasks. Higher scores
-            always indicate better quality.
-          </p>
-        </div>
+        <p class="prose method-note">
+          The sample-level variants differ in the replacement criteria:
+          <strong>Negative</strong> targets observed flaws,
+          <strong>Positive</strong> describes desired qualities, and
+          <strong>Mixed</strong> combines both. Higher reward scores always
+          indicate better quality.
+        </p>
       </section>
 
       <section
         id="results"
-        class="results-section"
+        class="section container"
         aria-labelledby="results-title"
       >
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">03 / The results</p>
-              <h2 id="results-title">
-                Better feedback.<br />Stronger generations.
-              </h2>
-            </div>
-            <p>
-              Dynamic rubrics improve their matched static baselines across all
-              three production styles.
-            </p>
-          </div>
-          <div class="results-layout">
-            <div class="result-summary">
-              <span class="eyebrow">Sample-level · Negative</span
-              ><strong class="result-number">+3.82</strong>
-              <p>mean quality points<br />over Sample-Static</p>
-              <div class="result-rule"></div>
-              <span class="eyebrow">Task-level evolution</span
-              ><strong class="result-number small">+1.08</strong>
-              <p>mean quality points<br />over Task-Static</p>
-            </div>
-            <figure>
-              <img
-                src="assets/main_results.png"
-                loading="lazy"
-                width="1429"
-                height="829"
-                alt="Script-quality scores. Sample-Static to RARE: 74.70 to 78.25 for 2D animation, 72.94 to 76.84 for 3D/stop-motion, and 68.29 to 72.31 for live action."
-              />
-              <figcaption>
-                Main paper results on a 0–100 scale. RL results average four
-                training seeds; mean gains average the three task scores.
-                Sample-Dynamic uses Negative replacement.
-              </figcaption>
-            </figure>
-          </div>
-          <details class="result-details">
-            <summary>
-              View the numerical results <span aria-hidden="true">＋</span>
-            </summary>
-            <div class="table-wrap">
-              <table>
-                <caption>
-                  Overall script-quality scores from the paper
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Method</th>
-                    <th scope="col">2D animation</th>
-                    <th scope="col">3D / stop-motion</th>
-                    <th scope="col">Live action</th>
-                    <th scope="col">Mean</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Task-Static</th>
-                    <td>75.41</td>
-                    <td>74.44</td>
-                    <td>68.59</td>
-                    <td>72.81</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">RARE · Task-level</th>
-                    <td>76.27</td>
-                    <td>75.56</td>
-                    <td>69.84</td>
-                    <td>73.89</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Sample-Static</th>
-                    <td>74.70</td>
-                    <td>72.94</td>
-                    <td>68.29</td>
-                    <td>71.98</td>
-                  </tr>
-                  <tr class="highlight-row">
-                    <th scope="row">RARE · Sample-level, Negative</th>
-                    <td>78.25</td>
-                    <td>76.84</td>
-                    <td>72.31</td>
-                    <td>75.80</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">with Positive replacements</th>
-                    <td>76.37</td>
-                    <td>75.59</td>
-                    <td>69.91</td>
-                    <td>73.96</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">with Mixed replacements</th>
-                    <td>77.09</td>
-                    <td>75.67</td>
-                    <td>71.13</td>
-                    <td>74.63</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </details>
-          <a
-            class="text-link"
-            href="assets/pairwise_evaluation.png"
-            target="_blank"
-            rel="noopener"
-            >View pairwise evaluation results
-            <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </section>
-
-      <section
-        class="section resources container"
-        aria-labelledby="resources-title"
-      >
-        <p class="eyebrow">04 / Explore further</p>
-        <h2 id="resources-title">Build on RARE.</h2>
-        <p>
-          Training code, rubric evolution, and 5,989 query–rubric pairs<br />across
-          2D animation, 3D / stop-motion, and live action.
+        <h2 id="results-title">Results</h2>
+        <p class="prose section-intro">
+          Dynamic rubrics improve their matched static baselines across all
+          three script-generation tasks. Sample-level RARE with Negative
+          replacements achieves the largest mean gain: 3.82 points over
+          Sample-Static.
         </p>
-        <div class="resource-grid">
-          <a href="https://openreview.net/forum?id=XgYh8jfypi"
-            ><span>Read the paper</span><span aria-hidden="true">↗</span
-            ><small>Method & experiments</small></a
-          ><a href="https://github.com/Eureka-Maggie/RARE"
-            ><span>Explore the code</span><span aria-hidden="true">↗</span
-            ><small>Training & reproduction</small></a
-          ><a href="https://huggingface.co/datasets/EurekaTian/RARE"
-            ><span>Get the dataset</span><span aria-hidden="true">↗</span
-            ><small>Queries & rubrics</small></a
-          >
+        <figure class="results-figure">
+          <img
+            src="assets/main_results.png"
+            loading="lazy"
+            width="1429"
+            height="829"
+            alt="Sample-Static to RARE quality scores: 74.70 to 78.25 for 2D animation, 72.94 to 76.84 for 3D/stop-motion, and 68.29 to 72.31 for live action."
+          />
+          <figcaption>
+            Script-quality scores on a 0–100 scale. Sample-Dynamic denotes RARE
+            with Negative replacements.
+          </figcaption>
+        </figure>
+        <div class="table-wrap">
+          <table class="results-table">
+            <caption>
+              RL results average four training seeds. Mean averages the three
+              task scores.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Method</th>
+                <th scope="col">Replacement</th>
+                <th scope="col">2D animation</th>
+                <th scope="col">3D / stop-motion</th>
+                <th scope="col">Live action</th>
+                <th scope="col">Mean</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row">
+                <th colspan="6" scope="rowgroup">Task-level rubrics</th>
+              </tr>
+              <tr>
+                <th scope="row">Task-Static</th>
+                <td>—</td>
+                <td>75.41</td>
+                <td>74.44</td>
+                <td>68.59</td>
+                <td>72.81</td>
+              </tr>
+              <tr>
+                <th scope="row">RARE (Task-level)</th>
+                <td>Task rubric rewrite</td>
+                <td>76.27</td>
+                <td>75.56</td>
+                <td>69.84</td>
+                <td>73.89</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr class="group-row">
+                <th colspan="6" scope="rowgroup">Sample-level rubrics</th>
+              </tr>
+              <tr>
+                <th scope="row">Sample-Static</th>
+                <td>—</td>
+                <td>74.70</td>
+                <td>72.94</td>
+                <td>68.29</td>
+                <td>71.98</td>
+              </tr>
+              <tr class="highlight-row">
+                <th scope="row">RARE (Sample-level)</th>
+                <td>Negative</td>
+                <td>78.25</td>
+                <td>76.84</td>
+                <td>72.31</td>
+                <td>75.80</td>
+              </tr>
+              <tr>
+                <th scope="row">RARE (Sample-level)</th>
+                <td>Positive</td>
+                <td>76.37</td>
+                <td>75.59</td>
+                <td>69.91</td>
+                <td>73.96</td>
+              </tr>
+              <tr>
+                <th scope="row">RARE (Sample-level)</th>
+                <td>Mixed</td>
+                <td>77.09</td>
+                <td>75.67</td>
+                <td>71.13</td>
+                <td>74.63</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </main>
     <footer class="container">
-      <a class="wordmark" href="#"
-        >RARE <span class="brand-symbol" aria-hidden="true">↻</span></a
-      >
       <p>
-        Reinforcement Learning with Adaptive Rubric Evolution<br />for
-        Open-Ended Generation
+        RARE · <a href="https://github.com/Eureka-Maggie/RARE">Code</a> ·
+        <a href="https://huggingface.co/datasets/EurekaTian/RARE">Dataset</a>
       </p>
-      <a href="https://github.com/Eureka-Maggie/RARE">Project repository ↗</a>
     </footer>
   </body>
 </html>
