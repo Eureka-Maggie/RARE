@@ -153,6 +153,7 @@
     const domainChanged = domain !== item.domain;
     activeCase = item;
     domain = item.domain;
+    $("#examples").dataset.activeDomain = domain;
     $$(".domain-tabs button").forEach((button) => {
       const selected = button.dataset.domain === domain;
       button.setAttribute("aria-selected", String(selected));

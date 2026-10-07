@@ -47,5 +47,23 @@ To share one case, use `?case=live%2F016&lang=en#examples`, for example
 ## Assets
 
 The method and result figures are copies of the released figures in `/assets`.
+The script logo is the author's supplied manuscript illustration, reused in the
+page title and browser favicon. Resource buttons use the GitHub Octicons mark and
+the Hugging Face logo; see `../THIRD_PARTY_NOTICES.md` for their sources.
 Markdown rendering uses locally vendored Marked and DOMPurify; their license
 files are in `vendor/`. The site loads no external fonts, analytics, or scripts.
+
+The layout takes inspiration from the [MathVista](https://mathvista.github.io/)
+and [We-Math](https://we-math.github.io/) project pages: compact resource buttons,
+selective emphasis in the abstract, and visible experimental results.
+
+The results include matched static-versus-RARE comparisons, pairwise model
+judgments, human preference, and separately trained writing/general-generation
+policies. Human preference counts ties and unresolved cases as half a win; it is
+not a raw win rate. The case browser still compares RARE with the initial Base
+model, not the static-rubric baseline in the aggregate results.
+
+## Citation
+
+The final `#bibtex` section is reserved for the author's BibTeX entry. Replace
+the placeholder when that entry is available.
