@@ -16,3 +16,11 @@ The project page vendors these browser libraries in `docs/vendor/`:
 - [DOMPurify](https://github.com/cure53/DOMPurify), version 3.4.16, under the
   Apache License 2.0 or Mozilla Public License 2.0. See
   `docs/vendor/dompurify.LICENSE`.
+
+The project page also uses:
+
+- GitHub's `mark-github-16` icon from [Primer Octicons](https://github.com/primer/octicons),
+  under the MIT License. See `docs/vendor/octicons.LICENSE`.
+- The [Hugging Face logo](https://huggingface.co/brand), downloaded from
+  `https://huggingface.co/front/assets/huggingface_logo-noborder.svg`, to identify
+  the dataset host.
