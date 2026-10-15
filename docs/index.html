@@ -20,7 +20,7 @@
     <meta property="og:url" content="https://eureka-maggie.github.io/RARE/" />
     <meta
       property="og:image"
-      content="https://eureka-maggie.github.io/RARE/assets/method_overview.png"
+      content="https://eureka-maggie.github.io/RARE/assets/paper-figure-1.png"
     />
     <title>
       RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended
@@ -29,7 +29,7 @@
     <link rel="canonical" href="https://eureka-maggie.github.io/RARE/" />
     <link rel="icon" href="assets/script-logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="assets/script-logo.png" />
-    <link rel="stylesheet" href="style.css?v=4" />
+    <link rel="stylesheet" href="style.css?v=5" />
     <script defer src="vendor/marked.umd.js"></script>
     <script defer src="vendor/purify.min.js"></script>
     <script defer src="app.js?v=4"></script>
@@ -143,8 +143,7 @@
           explicit, but learning progresses unevenly. Some criteria become fully
           satisfied and
           <strong>lose their ability to distinguish outputs</strong>, while
-          others remain informative.
-          We introduce
+          others remain informative. We introduce
           <strong class="text-blue"
             >Reinforcement Learning with Adaptive Rubric Evolution
             (RARE)</strong
@@ -156,8 +155,8 @@
           quality differences. It
           <strong>retains all other criteria and scores</strong>, preserving
           feedback that still distinguishes outputs. Within this update rule, we
-          compare rewarding desired qualities with penalizing observed flaws.
-          We study video script generation, where a model must produce coherent,
+          compare rewarding desired qualities with penalizing observed flaws. We
+          study video script generation, where a model must produce coherent,
           executable narratives under user constraints. Across
           <strong>2D animation, 3D / stop-motion, and live action</strong>,
           targeting observed flaws performs best, with a mean gain of
@@ -189,20 +188,25 @@
         </div>
         <figure>
           <a
-            href="assets/method_overview.png"
+            href="assets/paper-figure-1.png"
             target="_blank"
             rel="noopener"
             aria-label="Open the method figure at full resolution"
             ><img
-              src="assets/method_overview.png"
+              src="assets/paper-figure-1.png"
               loading="lazy"
-              width="2048"
-              height="1035"
+              width="2360"
+              height="720"
               alt="RARE pipeline: query–rubric data construction, eight on-policy rollouts, criterion scoring, replacement of saturated criteria, and GRPO optimization."
           /></a>
           <figcaption>
-            Sample-level rubric evolution. Unchanged criteria retain their
-            original scores.
+            <strong
+              >Figure 1. Sample-level RARE replaces saturated criteria while
+              retaining other feedback.</strong
+            >
+            Illustrated on script generation, the generator proposes
+            replacements from rollout differences. The judge rescores the
+            replacements on the same responses before the policy update.
           </figcaption>
         </figure>
         <div class="variant-guide" aria-label="Sample-level RARE variants">
@@ -242,111 +246,31 @@
           >
           and achieves the largest mean gain over its matched static baseline.
         </p>
-        <figure class="results-figure">
-          <img
-            src="assets/main_results.png"
-            loading="lazy"
-            width="1429"
-            height="829"
-            alt="Sample-Static to RARE quality scores: 74.70 to 78.25 for 2D animation, 72.94 to 76.84 for 3D/stop-motion, and 68.29 to 72.31 for live action."
-          />
+        <figure class="results-figure paper-table-figure">
+          <div
+            class="figure-scroll"
+            role="region"
+            tabindex="0"
+            aria-label="Table 2: main results; scroll horizontally on small screens"
+          >
+            <img
+              src="assets/paper-table-2.png"
+              loading="lazy"
+              width="2360"
+              height="1490"
+              alt="Table 2 from the paper, including large-scale reference models, adapted evolving-rubric baselines, training baselines, and RARE variants. RARE Negative scores 78.25, 76.84, and 72.31 across the three video types, averaging 75.80, a gain of 3.82 over Sample-Static. RARE Positive averages 73.96, Mixed 74.63, and task-level RARE 73.89."
+            />
+          </div>
           <figcaption>
             <strong
-              >Adaptive rubrics improve both task-level and sample-level
-              training.</strong
+              >Table 2. RARE improves over matched static baselines.</strong
             >
-            In this figure, Task-Dynamic is RARE (Task-level), and
-            Sample-Dynamic is RARE (Sample-level, Negative).
+            Scores are query averages within each video type. Avg. gives equal
+            weight to the three types. RL results average four seeds.
+            Parentheses show gains over the corresponding static baseline at the
+            same update level.
           </figcaption>
         </figure>
-        <div class="table-wrap">
-          <table class="results-table">
-            <caption>
-              Mean averages the three task scores equally. Δ Mean is the gain
-              over the corresponding static baseline. All scores are
-              higher-is-better.
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Method</th>
-                <th scope="col">Replacement</th>
-                <th scope="col">2D animation</th>
-                <th scope="col">3D / stop-motion</th>
-                <th scope="col">Live action</th>
-                <th scope="col">Mean</th>
-                <th scope="col">Δ Mean</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="group-row">
-                <th colspan="7" scope="rowgroup">Task-level rubrics</th>
-              </tr>
-              <tr>
-                <th scope="row">Task-Static</th>
-                <td>—</td>
-                <td>75.41</td>
-                <td>74.44</td>
-                <td>68.59</td>
-                <td>72.81</td>
-                <td class="muted-cell">—</td>
-              </tr>
-              <tr>
-                <th scope="row">RARE (Task-level)</th>
-                <td>Task rubric rewrite</td>
-                <td>76.27</td>
-                <td>75.56</td>
-                <td>69.84</td>
-                <td>73.89</td>
-                <td class="gain-cell">+1.08</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr class="group-row">
-                <th colspan="7" scope="rowgroup">Sample-level rubrics</th>
-              </tr>
-              <tr>
-                <th scope="row">Sample-Static</th>
-                <td>—</td>
-                <td>74.70</td>
-                <td>72.94</td>
-                <td>68.29</td>
-                <td>71.98</td>
-                <td class="muted-cell">—</td>
-              </tr>
-              <tr class="highlight-row">
-                <th scope="row">RARE (Sample-level)</th>
-                <td>
-                  <span class="variant-tag variant-negative">Negative</span>
-                </td>
-                <td>78.25</td>
-                <td>76.84</td>
-                <td>72.31</td>
-                <td>75.80</td>
-                <td class="gain-cell">+3.82</td>
-              </tr>
-              <tr>
-                <th scope="row">RARE (Sample-level)</th>
-                <td>
-                  <span class="variant-tag variant-positive">Positive</span>
-                </td>
-                <td>76.37</td>
-                <td>75.59</td>
-                <td>69.91</td>
-                <td>73.96</td>
-                <td class="gain-cell">+1.98</td>
-              </tr>
-              <tr>
-                <th scope="row">RARE (Sample-level)</th>
-                <td><span class="variant-tag variant-mixed">Mixed</span></td>
-                <td>77.09</td>
-                <td>75.67</td>
-                <td>71.13</td>
-                <td>74.63</td>
-                <td class="gain-cell">+2.65</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <div class="result-block">
           <h3 class="result-heading">Pairwise preference</h3>
           <p class="prose section-intro">
@@ -363,17 +287,18 @@
               aria-label="Pairwise preference chart; scroll horizontally on small screens"
             >
               <img
-                src="assets/pairwise_evaluation.png"
+                src="assets/paper-figure-5.png"
                 loading="lazy"
-                width="4043"
-                height="1336"
+                width="2185"
+                height="745"
                 alt="RARE wins, ties, and Sample-Static wins by task. GPT-5.4: 2D 46.4%, 13.1%, 40.5%; 3D 51.0%, 10.4%, 38.5%; live action 50.3%, 16.8%, 32.9%. Claude Sonnet 5: 2D 51.9%, 8.9%, 39.2%; 3D 58.3%, 8.3%, 33.3%; live action 56.3%, 9.6%, 34.1%."
               />
             </div>
             <figcaption>
-              Dynamic denotes <strong>RARE (Negative)</strong>; Static denotes
-              Sample-Static. Directional agreement measures consistency after
-              reversing the presentation order.
+              <strong>Figure 5. Both judges favor Negative.</strong>
+              Dynamic denotes RARE (Negative); Static denotes Sample-Static.
+              Directional agreement measures consistency after reversing the
+              presentation order.
             </figcaption>
           </figure>
         </div>
@@ -383,22 +308,9 @@
             <p>
               Five computer science PhD students blindly judge 60 script pairs,
               with three independent ratings per pair. Majority votes favor RARE
-              in 38 pairs.
+              in 38 pairs and Sample-Static in 13, leaving nine ties or
+              unresolved cases.
             </p>
-            <div
-              class="human-bar"
-              role="img"
-              aria-label="Majority votes across 60 pairs: 38 prefer RARE Negative, 9 ties or unresolved, and 13 prefer Sample-Static."
-            >
-              <span class="human-rare" style="flex: 38">38</span>
-              <span class="human-tie" style="flex: 9">9</span>
-              <span class="human-static" style="flex: 13">13</span>
-            </div>
-            <div class="human-legend" aria-hidden="true">
-              <span><i class="human-rare"></i>RARE</span>
-              <span><i class="human-tie"></i>Tie / unresolved</span>
-              <span><i class="human-static"></i>Static</span>
-            </div>
             <p class="preference-note">
               <strong class="text-teal">70.8% preference score</strong> when
               ties and unresolved cases count as half a win (95% bootstrap CI:
@@ -438,8 +350,8 @@
                   </tr>
                 </tbody>
                 <caption>
-                  Official benchmark macro averages; each task uses matched data
-                  and training settings.
+                  Table 4. Official benchmark macro averages; each task uses
+                  matched data and training settings.
                 </caption>
               </table>
             </div>

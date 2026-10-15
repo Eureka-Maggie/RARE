@@ -24,7 +24,7 @@ rewriting and sample-level criterion switching in **Negative**, **Positive**,
 and **Mixed** directions, together with matched static-rubric baselines.
 
 <p align="center">
-  <img src="assets/method_overview.png" width="100%" alt="RARE training pipeline">
+  <img src="docs/assets/paper-figure-1.png" width="100%" alt="Figure 1 from the paper: sample-level RARE">
 </p>
 
 ## Highlights
@@ -52,11 +52,11 @@ Dynamic rubrics improve their matched static baselines across 2D animation,
 setting uses Negative replacement.
 
 <p align="center">
-  <img src="assets/main_results.png" width="88%" alt="Task-level and sample-level dynamic rubric improvements">
+  <img src="docs/assets/paper-table-2.png" width="88%" alt="Table 2 from the paper: main results across three video types">
 </p>
 
 Independent pairwise evaluation also favors dynamic training across all three
-production styles; see [the pairwise results](assets/pairwise_evaluation.png)
+production styles; see [the pairwise results](docs/assets/paper-figure-5.png)
 and [implementation notes](docs/paper_implementation_notes.md).
 
 ## Released variants

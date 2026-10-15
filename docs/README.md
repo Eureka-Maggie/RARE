@@ -55,7 +55,22 @@ To share one case, use `?case=live%2F016&lang=en#examples`, for example
 
 ## Assets
 
-The method and result figures are copies of the released figures in `/assets`.
+The research figures below are direct crops of the author-supplied `RARE.pdf`
+(provided on 15 October 2026). The PDF's original artwork, labels, and values
+are preserved. Crop rectangles use PDF points from the top-left of the page;
+the PNGs are rendered at five pixels per point.
+
+| Website asset | Paper location | Crop rectangle (x0, y0, x1, y1) |
+| --- | --- | --- |
+| `assets/paper-figure-1.png` | Figure 1, page 3 | 62, 84, 534, 228 |
+| `assets/paper-table-2.png` | Table 2, page 6 | 62, 240, 534, 538 |
+| `assets/paper-figure-5.png` | Figure 5, page 9 | 79, 401, 516, 550 |
+
+These replace the previous `method_overview.png`, `main_results.png`, and
+`pairwise_evaluation.png` assets. The root README uses the same paper crops.
+Human evaluation is reported in text, and the additional-task results table
+transcribes Table 4 of the paper.
+
 The script logo is the author's supplied manuscript illustration, reused in the
 page title and browser favicon. Resource buttons use the GitHub Octicons mark and
 the Hugging Face logo; see `../THIRD_PARTY_NOTICES.md` for their sources.
