@@ -65,7 +65,7 @@
     list.replaceChildren();
     cases
       .filter((item) => item.domain === domain)
-      .forEach((item) => {
+      .forEach((item, index) => {
         const button = el("button", "case-choice");
         button.type = "button";
         button.dataset.case = item.id;
@@ -77,13 +77,8 @@
         );
         title.lang = language === "en" ? "en" : "zh-CN";
         button.append(
-          el("small", "", item.id.toUpperCase()),
+          el("small", "", String(index + 1).padStart(2, "0")),
           title,
-          el(
-            "span",
-            "case-delta",
-            `${number(item.scores[0].base)} → ${number(item.scores[0].rare)}`,
-          ),
         );
         button.addEventListener("click", () => selectCase(item.id, true));
         list.append(button);
@@ -94,23 +89,14 @@
     const scores = $("#scores");
     scores.replaceChildren();
     activeCase.scores.slice(1).forEach((metric, index) => {
-      const block = el("div", "metric");
-      block.append(el("p", "metric-title", metrics[index]));
+      const row = el("tr");
+      const heading = el("th", "", metrics[index]);
+      heading.scope = "row";
+      row.append(heading);
       ["base", "rare"].forEach((variant) => {
-        const row = el("div", `metric-row ${variant}`);
-        row.setAttribute("role", "img");
-        row.setAttribute(
-          "aria-label",
-          `${variant === "base" ? "Base" : "RARE"}: ${number(metric[variant])} out of 100`,
-        );
-        const track = el("span", "bar-track");
-        const bar = el("span", "bar");
-        bar.style.width = `${metric[variant]}%`;
-        track.append(bar);
-        row.append(track, el("span", "value", number(metric[variant])));
-        block.append(row);
+        row.append(el("td", variant, number(metric[variant])));
       });
-      scores.append(block);
+      scores.append(row);
     });
   }
 
@@ -153,7 +139,6 @@
     const domainChanged = domain !== item.domain;
     activeCase = item;
     domain = item.domain;
-    $("#examples").dataset.activeDomain = domain;
     $$(".domain-tabs button").forEach((button) => {
       const selected = button.dataset.domain === domain;
       button.setAttribute("aria-selected", String(selected));

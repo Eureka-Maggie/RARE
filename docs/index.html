@@ -29,10 +29,10 @@
     <link rel="canonical" href="https://eureka-maggie.github.io/RARE/" />
     <link rel="icon" href="assets/script-logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="assets/script-logo.png" />
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
     <script defer src="vendor/marked.umd.js"></script>
     <script defer src="vendor/purify.min.js"></script>
-    <script defer src="app.js?v=3"></script>
+    <script defer src="app.js?v=4"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -51,6 +51,31 @@
           >
           <span>for Open-Ended Generation</span>
         </h1>
+        <div class="paper-authorship">
+          <p class="author-list" aria-label="Authors">
+            <span>Tian Xueyun<sup>1,2</sup></span>
+            <span>Bingbing Xu<sup>1</sup></span>
+            <span>Chuyue Li<sup>3</sup></span>
+            <span>Jiaming Liu<sup>†</sup></span>
+            <span>Chao Zhang</span>
+            <span>Weijia Feng</span>
+            <span>MingHua Ma</span>
+            <span>Yu Zhao<sup>1</sup></span>
+            <span>Jingchu Wang<sup>1,2</sup></span>
+            <span>Ruihua Huang</span>
+            <span>Yuanzhuo Wang<sup>1</sup></span>
+            <span>Huawei Shen<sup>1,2</sup></span>
+          </p>
+          <p class="affiliations" aria-label="Affiliations">
+            <span><sup>1</sup> Institute of Computing Technology, CAS</span>
+            <span><sup>2</sup> University of Chinese Academy of Sciences</span>
+            <span><sup>3</sup> University of Illinois at Urbana-Champaign</span>
+          </p>
+          <p class="author-notes">
+            <span><sup>†</sup> Project Leader</span>
+            <a href="mailto:tianxueyun23z@ict.ac.cn">tianxueyun23z@ict.ac.cn</a>
+          </p>
+        </div>
         <nav class="paper-links" aria-label="Project links">
           <a href="https://openreview.net/forum?id=XgYh8jfypi">
             <svg
@@ -507,25 +532,31 @@
             aria-label="Selected example"
             hidden
           >
-            <div class="query-card">
-              <div class="query-label">
-                <strong>Prompt</strong><span id="case-id"></span
-                ><a id="permalink" href="#examples">Link to this example</a>
+            <div class="example-context">
+              <div class="query-block">
+                <div class="query-label">
+                  <strong>Prompt</strong><span id="case-id"></span
+                  ><a id="permalink" href="#examples">Permalink</a>
+                </div>
+                <p id="query"></p>
               </div>
-              <p id="query"></p>
-            </div>
-            <div class="score-header">
-              <h3>Quality scores <span>/ 100</span></h3>
-              <div class="legend">
-                <span><i class="base-dot"></i>Base</span
-                ><span><i class="rare-dot"></i>RARE</span>
+              <div class="case-evaluation">
+                <table class="case-scores">
+                  <caption>
+                    Quality scores
+                    <span>/ 100</span>
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Criterion</th>
+                      <th scope="col">Base</th>
+                      <th scope="col">RARE</th>
+                    </tr>
+                  </thead>
+                  <tbody id="scores"></tbody>
+                </table>
               </div>
             </div>
-            <div
-              id="scores"
-              class="scores"
-              aria-label="Scores for the selected example"
-            ></div>
             <div class="reading-toolbar">
               <div class="view-switch" role="group" aria-label="Script view">
                 <button data-view="excerpt" aria-pressed="true">

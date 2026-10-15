@@ -11,6 +11,11 @@ python3 -m http.server 8000 --directory docs
 
 Then open <http://localhost:8000/>. No package installation is required.
 
+## Authorship
+
+The author order, affiliation superscripts, contact email, and dagger annotation
+follow the supplied manuscript's title page. The dagger denotes **Project Leader**.
+
 ## Selected examples
 
 `cases/selection.json` records the nine author-selected examples (three per
@@ -26,6 +31,10 @@ case labels, excerpts, full scripts, and downloads together. The choice persists
 across tasks and visits; an explicit `lang` URL parameter takes precedence.
 English text is a translation of the original output, not a new model sample.
 Scores always refer to the Chinese originals.
+
+Cases are selected from a numbered text index. A compact table compares the
+four evaluation dimensions; the two script columns use manuscript-style
+typography with independent scrolling. On small screens the columns stack.
 
 - **Base:** initial Qwen3-4B-Instruct-2507, before task-specific training.
 - **RARE:** the sample-level Negative replacement variant.
