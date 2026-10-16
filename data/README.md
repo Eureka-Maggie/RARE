@@ -25,7 +25,7 @@ query-specific rubric was constructed from the query and eight pregenerated
 candidate scripts so that its criteria capture observable quality differences.
 
 The splits are group-disjoint: all queries derived from one source video stay
-on the same side of the train-test boundary. The public files retain the exact
+on the same side of the train-test boundary. The released files retain the exact
 training schema while replacing source-video titles and uploader handles with
 stable anonymous identifiers.
 
