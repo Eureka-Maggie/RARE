@@ -2,7 +2,7 @@
 
 # RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation
 
-Official implementation and data release for the RARE ICLR 2027 submission.
+Official implementation and data release for RARE.
 
 <p>
   <a href="https://openreview.net/forum?id=XgYh8jfypi"><img src="https://img.shields.io/badge/OpenReview-Paper-B31B1B?style=flat-square" alt="Paper"></a>
@@ -173,6 +173,55 @@ bash scripts/train_task_static.sh --task 3d_stopmotion
 bash scripts/train_task_dynamic.sh --task 3d_stopmotion
 ```
 
+These commands use the paper runs' shared optimization configuration:
+
+| Setting | Reference value |
+| --- | ---: |
+| Base model | Qwen3-4B-Instruct-2507 |
+| Algorithm | GRPO |
+| Epochs / seed | 2 / 1 |
+| Prompts per training batch | 32 |
+| Rollouts per prompt | 8 |
+| Prompt / response limit | 4,096 / 8,192 tokens |
+| Overlength handling | filter prompts; left truncation |
+| Learning rate | 1e-6 |
+| PPO mini-batch / micro-batch per GPU | 32 / 4 |
+| Actor KL loss | coefficient 0.001, `low_var_kl` |
+| KL in reward | disabled |
+| Entropy coefficient | 0 |
+| Padding removal / gradient checkpointing | enabled / enabled |
+| Actor rollout/ref log-prob micro-batch per GPU | 32 / 32 |
+| Actor/ref parameter offload | disabled / disabled |
+| Rollout backend / tensor parallelism | vLLM / 2 |
+| Rollout GPU-memory utilization | 0.7 |
+| Validation rollouts / temperature | 4 / 1.0 |
+| Validate before training / resume mode | disabled / automatic |
+| Reward workers | 1 |
+| Hardware topology | 1 node, 8 GPUs |
+
+Training-time rubric calls use judge concurrency 8 and validation-judge
+concurrency 4. Both judges use temperature 0.0; their HTTP timeouts are 900
+and 1,200 seconds, respectively. Sample-level evolution uses writer
+concurrency 16, temperature 0.2, an 8,192-token response limit, five attempts
+with a three-second retry delay, at most three criterion replacements, and a
+3,600-second distributed coordination timeout.
+
+The task-specific checkpoint/evaluation cadence and task-dynamic rewrite
+schedule are fixed as follows:
+
+| Task | Save every | Evaluate at | Task-dynamic rewrite steps |
+| --- | ---: | ---: | --- |
+| `2d_animation` | 22 steps | 132 | 22, 44, 66, 88, 110 |
+| `3d_stopmotion` | 18 steps | 108 | 18, 36, 54, 72, 90 |
+| `live_action` | 16 steps | 94 | 16, 31, 47, 63, 78 |
+
+Task-level rewrites use the most recent three steps, retain at most 16
+evidence groups, require at least 12, and reject a candidate when the shadow
+mean shifts by more than 0.35. The writer has a 100,000-token prompt budget,
+five attempts with a three-second retry delay, and a 3,600-second coordination
+timeout. These values are encoded in
+[`scripts/train.py`](scripts/train.py), not left to framework defaults.
+
 Useful overrides:
 
 ```bash
@@ -240,7 +289,6 @@ verl/                           required training-framework snapshot
 ## Paper
 
 **RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation.**
-ICLR 2027 submission.
 
 [Read the paper on OpenReview](https://openreview.net/forum?id=XgYh8jfypi) or
 [explore the project page](https://eureka-maggie.github.io/RARE/).

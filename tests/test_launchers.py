@@ -43,6 +43,10 @@ def test_every_released_method_builds_a_complete_command(tmp_path, method):
     assert "3d_stopmotion/train.parquet" in joined
     assert "3d_stopmotion/test.parquet" in joined
     assert "RUBRIC_SCRIPT_SWITCH_STRATEGY" in env
+    assert env["RUBRIC_SCRIPT_SWITCH_CONCURRENCY"] == "16"
+    assert env["RUBRIC_SCRIPT_SWITCH_COORD_TIMEOUT_SECS"] == "3600"
+    assert env["RUBRIC_SCRIPT_JUDGE_TEMPERATURE"] == "0.0"
+    assert env["RUBRIC_SCRIPT_VAL_JUDGE_TEMPERATURE"] == "0.0"
 
     if method.startswith("sample-dynamic-"):
         assert env["RUBRIC_SCRIPT_SWITCHING_ENABLED"] == "1"
@@ -55,6 +59,10 @@ def test_every_released_method_builds_a_complete_command(tmp_path, method):
         assert env["RUBRIC_SCRIPT_SWITCHING_ENABLED"] == "0"
         assert "reward.reward_manager.name=rubric_script_task" in command
         assert env["RUBRIC_SCRIPT_TASK_SWITCHING_ENABLED"] == ("1" if method == "task-dynamic" else "0")
+        assert env["RUBRIC_SCRIPT_TASK_EVIDENCE_WINDOW_STEPS"] == "3"
+        assert env["RUBRIC_SCRIPT_TASK_MAX_EVIDENCE_GROUPS"] == "16"
+        assert env["RUBRIC_SCRIPT_TASK_MIN_EVIDENCE_GROUPS"] == "12"
+        assert env["RUBRIC_SCRIPT_TASK_SHADOW_MAX_MEAN_SHIFT"] == "0.35"
 
 
 def test_six_shell_launchers_are_the_only_shell_files():
