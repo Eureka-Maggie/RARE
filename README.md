@@ -85,12 +85,20 @@ cd RARE
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv venv --python 3.12
 source .venv/bin/activate
-uv pip install -e '.[vllm,test]'
+uv pip install setuptools==79.0.1 wheel==0.46.3 \
+  packaging==25.0 ninja==1.13.0
+uv pip install torch==2.7.0+cu126 \
+  --index-url https://download.pytorch.org/whl/cu126
+uv pip install -r requirements.txt \
+  --extra-index-url https://download.pytorch.org/whl/cu126 \
+  --no-build-isolation
+uv pip install -e . --no-deps
 ```
 
-PyTorch, vLLM, FlashAttention, and FlashInfer builds must match the CUDA
-driver on the target machine. Install cluster-compatible builds before
-starting a full training run.
+The root [`requirements.txt`](requirements.txt) is the canonical environment
+list. PyTorch, vLLM, FlashAttention, and FlashInfer builds must match the CUDA
+driver on the target machine. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md)
+for the hardware record and compatibility notes.
 
 ## Dataset
 

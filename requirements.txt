@@ -1,25 +1,41 @@
-# requirements.txt records the full set of dependencies for development
-accelerate
-cachetools
-codetiming
-datasets
-dill
-hydra-core
-liger-kernel
-numpy<2.0.0
-openai>=1.66.0
-pandas
-peft
-pillow
-pyarrow>=19.0.0
-pybind11
-pylatexenc
-pre-commit
-ray[default]
-tensordict>=0.8.0
-torchdata
-transformers
-# vllm==0.8.4
-wandb
-packaging>=20.0
-tensorboard
+# Canonical environment for the released RARE experiments.
+# Python: 3.12.13
+# PyTorch CUDA runtime: 12.6
+# Install PyTorch first; see docs/ENVIRONMENT.md.
+
+accelerate==1.13.0
+cachetools==7.0.5
+codetiming==1.4.0
+datasets==4.8.4
+dill==0.4.1
+flash-attn==2.7.4.post1
+flashinfer-python==0.3.1
+hydra-core==1.3.2
+liger-kernel==0.7.0
+ninja==1.13.0
+numpy==1.26.4
+openai==1.90.0
+packaging==25.0
+pandas==3.0.2
+peft==0.18.1
+pillow==12.2.0
+pyarrow==23.0.1
+pybind11==3.0.3
+pylatexenc==2.10
+ray[default]==2.43.0
+setuptools==79.0.1
+tensorboard==2.20.0
+tensordict==0.10.0
+torch==2.7.0+cu126
+torchdata==0.11.0
+transformers==4.51.1
+vllm==0.9.2
+wandb==0.25.1
+wheel==0.46.3
+
+# Release verification tools
+pre-commit==4.5.1
+py-spy==0.4.1
+pytest==9.0.3
+pytest-asyncio==1.4.0
+ruff==0.15.9
