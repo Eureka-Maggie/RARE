@@ -712,16 +712,15 @@ figcaption {
   text-align: left;
   font-size: 24px;
 }
-.citation-placeholder {
+.citation-code {
   background: #f4f5f7;
   border: 1px solid #e5e7eb;
   border-radius: 5px;
   margin: 0;
   padding: 24px;
-  min-height: 116px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  color: var(--muted);
+  color: var(--ink);
   font:
     13px/1.8 ui-monospace,
     SFMono-Regular,

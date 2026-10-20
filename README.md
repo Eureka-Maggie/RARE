@@ -2,12 +2,13 @@
 
 # RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation
 
-Official implementation and data release for RARE.
+Official code, models, and dataset for RARE.
 
 <p>
-  <a href="https://openreview.net/forum?id=XgYh8jfypi"><img src="https://img.shields.io/badge/OpenReview-Paper-B31B1B?style=flat-square" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2610.25434"><img src="https://img.shields.io/badge/arXiv-2610.25434-B31B1B?style=flat-square" alt="Paper on arXiv"></a>
   <a href="https://eureka-maggie.github.io/RARE/"><img src="https://img.shields.io/badge/Project%20Page-Examples-52735C?style=flat-square" alt="Project page and interactive examples"></a>
   <a href="https://huggingface.co/datasets/EurekaTian/RARE"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-FFD21E?style=flat-square" alt="Hugging Face dataset"></a>
+  <a href="https://huggingface.co/EurekaTian/RARE-Negative"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-FFD21E?style=flat-square" alt="Hugging Face model"></a>
   <a href="https://github.com/Eureka-Maggie/RARE/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Eureka-Maggie/RARE/ci.yml?branch=main&style=flat-square&label=tests" alt="Tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code%20license-Apache--2.0-2F6FEB?style=flat-square" alt="Apache-2.0 license"></a>
 </p>
@@ -15,8 +16,9 @@ Official implementation and data release for RARE.
 </div>
 
 **[Project page & interactive examples](https://eureka-maggie.github.io/RARE/)** ·
-[Paper](https://openreview.net/forum?id=XgYh8jfypi) ·
-[Dataset](https://huggingface.co/datasets/EurekaTian/RARE)
+[Paper](https://arxiv.org/abs/2610.25434) ·
+[Dataset](https://huggingface.co/datasets/EurekaTian/RARE) ·
+[Model](https://huggingface.co/EurekaTian/RARE-Negative)
 
 RARE trains language models for complete screenplay generation with rubric
 rewards that evolve alongside the policy. It supports task-level rubric
@@ -130,6 +132,22 @@ from datasets import load_dataset
 
 dataset = load_dataset("EurekaTian/RARE", "2d_animation")
 ```
+
+## Released models
+
+[**RARE-Negative**](https://huggingface.co/EurekaTian/RARE-Negative) contains
+three full checkpoints from sample-level Negative training, based on
+Qwen3-4B-Instruct-2507:
+
+| Production style | Checkpoint folder | Final RL step |
+| --- | --- | ---: |
+| 2D animation | [`2d_animation`](https://huggingface.co/EurekaTian/RARE-Negative/tree/main/2d_animation) | 132 |
+| 3D/stop-motion | [`3d_stopmotion`](https://huggingface.co/EurekaTian/RARE-Negative/tree/main/3d_stopmotion) | 108 |
+| Live action | [`live_action`](https://huggingface.co/EurekaTian/RARE-Negative/tree/main/live_action) | 94 |
+
+Each folder is a separate model for its production style. See the
+[model card](https://huggingface.co/EurekaTian/RARE-Negative) for checkpoint
+details and results.
 
 ## Model and API configuration
 
@@ -290,8 +308,25 @@ verl/                           required training-framework snapshot
 
 **RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation.**
 
-[Read the paper on OpenReview](https://openreview.net/forum?id=XgYh8jfypi) or
+[Read the paper on arXiv](https://arxiv.org/abs/2610.25434) or
 [explore the project page](https://eureka-maggie.github.io/RARE/).
+
+## Citation
+
+If you use RARE, please cite the paper. The entry is also available in
+[`CITATION.bib`](CITATION.bib).
+
+```bibtex
+@misc{tian2026rarereinforcementlearningadaptive,
+  title={RARE: Reinforcement Learning with Adaptive Rubric Evolution for Open-Ended Generation},
+  author={Xueyun Tian and Bingbing Xu and Chuyue Li and Jiaming Liu and Chao Zhang and Weijia Feng and MingHua Ma and Yu Zhao and Jingchu Wang and Ruihua Huang and Yuanzhuo Wang and Huawei Shen},
+  year={2026},
+  eprint={2610.25434},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2610.25434},
+}
+```
 
 ## License and acknowledgements
 

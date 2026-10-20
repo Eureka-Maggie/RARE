@@ -32,3 +32,9 @@ stable anonymous identifiers.
 The release contains annotations only. Original videos are not redistributed.
 The annotation files are licensed under CC BY 4.0; the Apache-2.0 license in
 the repository root applies to code, not to third-party source material.
+
+## Citation
+
+If you use these annotations, please cite the
+[RARE paper](https://arxiv.org/abs/2610.25434). The official BibTeX entry is
+available in [`../CITATION.bib`](../CITATION.bib).

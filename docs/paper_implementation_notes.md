@@ -1,8 +1,8 @@
 # Paper-to-code guide
 
-This guide maps the released RARE experiment families to their launchers and
-runtime implementation. It covers the six variants supported by this public
-release.
+This guide maps the experiment families in the
+[RARE paper](https://arxiv.org/abs/2610.25434) to their launchers and runtime
+implementation. It covers the six variants supported by this public release.
 
 ## Experiment matrix
 
@@ -70,6 +70,7 @@ videos are not redistributed. The checked-in
 [`release_manifest.json`](../release_manifest.json) records row counts and
 SHA-256 digests for all six annotation files.
 
-The release intentionally excludes private infrastructure configuration,
+The code repository excludes private infrastructure configuration,
 experiment-tracking credentials, model checkpoints, and generated training
-outputs.
+outputs. The three sample-level Negative checkpoints are released separately as
+[RARE-Negative on Hugging Face](https://huggingface.co/EurekaTian/RARE-Negative).

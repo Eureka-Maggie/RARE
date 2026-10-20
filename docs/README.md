@@ -1,7 +1,8 @@
 # RARE project page
 
-The static project page is served at <https://eureka-maggie.github.io/RARE/>
-from the `main` branch's `/docs` directory using GitHub Pages.
+The static project page is served at <https://eureka-maggie.github.io/RARE/>.
+The [Pages workflow](../.github/workflows/pages.yml) deploys the `main` branch's
+`docs/` directory when page files change, or when run manually.
 
 Preview locally from the repository root:
 
@@ -13,8 +14,9 @@ Then open <http://localhost:8000/>. No package installation is required.
 
 ## Authorship
 
-The author order, affiliation superscripts, contact email, and dagger annotation
-follow the supplied manuscript's title page. The dagger denotes **Project Leader**.
+Author names and order follow the [arXiv record](https://arxiv.org/abs/2610.25434).
+Affiliation superscripts, contact email, and the dagger annotation follow the
+supplied manuscript's title page. The dagger denotes **Project Leader**.
 
 ## Selected examples
 
@@ -89,5 +91,7 @@ model, not the static-rubric baseline in the aggregate results.
 
 ## Citation
 
-The final `#bibtex` section is reserved for the author's BibTeX entry. Replace
-the placeholder when that entry is available.
+The `#bibtex` section contains the official
+[arXiv BibTeX entry](https://arxiv.org/bibtex/2610.25434), also stored in
+[`../CITATION.bib`](../CITATION.bib). Keep this entry, the root README, and the
+Hugging Face model and dataset citations in sync when publication metadata changes.
